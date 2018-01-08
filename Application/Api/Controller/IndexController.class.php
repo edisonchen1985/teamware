@@ -5,7 +5,7 @@ class IndexController extends Controller {
     public function index(){
        echo 'Api';
     }
-    public function post(){
+    public function tm_post(){
     	header("Access-Control-Allow-Origin: *");
     	$data = file_get_contents("php://input");
     	$data_array = json_decode($data,true);
@@ -32,7 +32,7 @@ class IndexController extends Controller {
         echo json_encode($result);
 
     }
-    public function get(){
+    public function tm_get(){
     	$url = 'http://192.168.6.214:8080/CCP/rest/api/v1/formget';
     }
 }
