@@ -19,15 +19,15 @@ class IndexController extends Controller {
         curl_setopt($curl, CURLOPT_HTTPHEADER,
         	array(
 	        	'Content-Type: application/json; charset=utf-8',
-	        	'Content-Length:' . strlen($json_data)
+	        	'Content-Length:' . strlen($data)
 	        )
 		);
         curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
         curl_setopt($curl,CURLOPT_POST,1);
-        curl_setopt($curl,CURLOPT_POSTFIELDS,$json_data);
+        curl_setopt($curl,CURLOPT_POSTFIELDS,$data);
         $result = json_decode(curl_exec($curl),true);
         curl_close($curl);
-        return($result);
+        echo json_encode($result);
 
     }
     public function get(){
