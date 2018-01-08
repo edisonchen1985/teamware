@@ -6,6 +6,7 @@ class IndexController extends Controller {
        echo 'Api';
     }
     public function post(){
+    	header("Access-Control-Allow-Origin: *");
     	$data = file_get_contents("php://input");
     	$url = 'http://192.168.6.214:8080/CCP/rest/api/v1/formpost';
     	// $data = array();
