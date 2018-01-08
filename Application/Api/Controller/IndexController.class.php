@@ -8,7 +8,9 @@ class IndexController extends Controller {
     public function post(){
     	header("Access-Control-Allow-Origin: *");
     	$data = file_get_contents("php://input");
-    	$url = 'http://192.168.6.214:8080/CCP/rest/api/v1/formpost';
+    	$data_array = json_decode($data,true);
+    	$url = $data_array['apiUrl'];
+    	// $url = 'http://192.168.6.214:8080/CCP/rest/api/v1/formpost';
     	// $data = array();
     	// $data['name'] = 'Tom';
     	// $data['age'] = '12';
