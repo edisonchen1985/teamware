@@ -1,0 +1,24 @@
+[ 2018-01-08T11:28:05+08:00 ] ::1 /teamware/index.php/Api/Index/post
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000644s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000722s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000782s ]
+NOTIC: [2048] Declaration of Api\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') /Applications/MAMP/htdocs/teamware/Application/Api/Controller/IndexController.class.php 第 34 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001135s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001817s ]
+
+[ 2018-01-08T11:30:30+08:00 ] ::1 /teamware/index.php/Api/Index/post
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000364s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+NOTIC: [2048] Declaration of Api\Controller\IndexController::get() should be compatible with Think\Controller::get($name = '') /Applications/MAMP/htdocs/teamware/Application/Api/Controller/IndexController.class.php 第 34 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000991s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001223s ]
+
