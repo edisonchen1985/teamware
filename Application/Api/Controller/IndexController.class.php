@@ -86,6 +86,29 @@ class IndexController extends Controller {
         echo json_encode($result);
 
     }
+    public function qmt_login_check(){
+        header("Access-Control-Allow-Origin: *");
+        $data = file_get_contents("php://input");
+        $data_array = json_decode($data,true);
+        $url = $data_array['apiUrl'];
+        $param = json_encode($data_array['param']);
+        $curl = curl_init();
+        curl_setopt($curl,CURLOPT_URL,$url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json; charset=utf-8',
+                'Content-Length:' . strlen($param)
+            )
+        );
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($curl,CURLOPT_POST,1);
+        curl_setopt($curl,CURLOPT_POSTFIELDS,$param);
+        $result = json_decode(curl_exec($curl),true);
+        curl_close($curl);
+        echo json_encode($result);
+
+    }
     public function tm_get(){
     	$url = 'http://192.168.6.214:8080/CCP/rest/api/v1/formget';
     }
