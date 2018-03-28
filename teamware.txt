@@ -1,0 +1,157 @@
+系统日志：/var/log/syslog
+------------------------------------------------------------------------------------
+诺曼城邦（服务器）：
+172.16.100.157  : nginx
+172.16.100.158  : Mongo数据库 (jitis meet视频服务器) 
+172.16.100.159  : rocket代码  /home/ubuntu/teamware
+账号：ubuntu，密码ubuntu
+
+Mongo数据库 （27217端口）：
+ service mongod restart（重启）
+/etc/mongodb.conf （配置文件）
+------------------------------------------------------------------------------------
+(MONGODB服务器)
+172.16.100.147
+ubuntu
+TeamViwer
+
+账号：admin
+密码：dpl123456
+数据库名：rocketchat
+
+存放在目录：/home/ubuntu/mongo/017@mongos
+
+备份数据库命令:mongodump --host 172.16.100.149 --port 27117 --out /home/ubuntu/mongo/dump/mongodump-2018-1-23 --db rocketchat
+---------------------------------------------------------------------------------------------------
+(RocketChat 代码服务器)
+172.16.100.148
+ubuntu
+TeamViwer
+
+切换root账户：sudo bash
+Svn: dpl/123456
+
+代码存放路径： /home/ubuntu/rocketchat/team/R
+先执行update.sh
+
+然后在/home/ubuntu/rocketchat/team/R
+执行：meteor  --allow-superuser
+
+再执行build.sh（其中最后在目录：/usr/lib/systemd/system 有脚本：rocketchat@3006.service）
+
+启动过程中可以查看系统日志：/var/log/syslog
+
+(关闭服务：systemctl stop rocketchat@3006.service )
+---------------------------------------------------------------------------------------------------
+cc.nomalis的服务器：
+
+172.16.100.183
+ubuntu
+ubuntu
+
+nginx.conf文件：
+
+/etc/nginx/sites-enabled/default
+
+
+下载代码：
+svn checkout https://58.32.252.76:8443/svn/10010/R && cd R/
+
+代码版的编译执行（如果出错，多执行几次）
+npm install
+meteor 
+
+开始服务器版的编译：（build为指定的目录名称）
+meteor build ../build --architecture os.linux.x86_64
+
+cd ../build && tar zxvf R.tar.gz
+cd ./build/bundle/programs/server
+npm install
+
+
+export ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/
+export MONGO_URL=mongodb://localhost:27017/rocketchat
+export PORT=3000
+
+cd ./build/bundle
+node main.js
+---------------------------------------------------------------------------------------------------
+Video.nomalis的服务器：
+
+172.16.100.182
+ubuntu/ubuntu
+
+---------------------------------------------------------------------------------------------------
+
+mkdir rocketchat && cd rocketchat && mkdir team && cd team
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+service mongod start
+
+sudo apt install curl
+curl https://install.meteor.com/ | sh
+
+sudo apt install git -y
+
+sudo apt install subversion -y
+
+svn checkout https://58.32.252.76:8443/svn/10010/R && cd R/
+
+
+sudo apt-get install npm -y
+sudo apt-get install build-essential
+sudo npm install -g n
+sudo n 4.8.4
+
+npm install
+meteor
+
+meteor build ../build --architecture os.linux.x86_64
+
+cd ../build && tar zxvf R.
+npm install
+cd ../..
+
+export ROOT_URL=http://your-host-name.com-as-accessed-from-internet:3000/
+export MONGO_URL=mongodb://localhost:27017/rocketchat
+export PORT=3000
+
+node main.js
+
+vim /usr/lib/systemd/system/rocketchat.service
+
+// systemctl daemon-reload
+systemctl enable rocketchat.service
+systemctl start rocketchat.service
+
+
+
+
+/**
+
+export ROOT_URL=http://192.168.30.146:3000
+export MONGO_URL=mongodb://localhost:27017/rocketchat
+export PORT=3000
+
+
+
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+npm config set registry http://registry.npmjs.org 
+npm config set registry https://registry.npm.taobao.org
+npm config get registry
+
+// 换源后可能还会有些包报错, 进node_model把这些包删掉, 重新npm install就行了
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash  
+nvm install v8.9.1
+nvm install v4.8.4
+nvm use 8.9.1
+
+
+systemctl stop rocketchat.service
+
+mongodump --host 172.16.100.149 --port 27117 --out /home/ubuntu/mongo/dump/mongodump-2018-1-23 --db rocketchat
+*/
